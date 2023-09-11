@@ -49,10 +49,16 @@ Y_test = tf.keras.utils.to_categorical(Y_test, NB_CLASSES)
 
 # Building the model
 model = tf.keras.models.Sequential()
+
+# Hidden Layer 1
 model.add(
-    # Adding a Dense Layer with NB_CLASSES NEURONS which take RESHAPED inputs with softmax Activation
-    keras.layers.Dense(NB_CLASSES, input_shape=(RESHAPED,), name='dense_layer', activation='softmax')
-)
+    keras.layers.Dense(N_HIDDEN, input_shape=(RESHAPED,), name='dense_layer_1', activation='relu'))
+# Hidden Layer 2
+model.add(
+    keras.layers.Dense(N_HIDDEN, name='dense_layer_2', activation='relu'))
+
+model.add(
+    keras.layers.Dense(NB_CLASSES, name='output', activation='softmax'))
 
 # Compiling Model
 model.compile(optimizer='SGD',
@@ -68,6 +74,6 @@ test_less, test_acc = model.evaluate(X_test, Y_test)
 print('Test Accuracy:', test_acc)
 
 # RESULTS
-# Val Accuracy = 0.9231
-# Train Accuracy = 0.9230
-# Test Accuracy = 0.9225
+# Train Accuracy = 0.9765
+# Val Accuracy = 0.9754
+# Test Accuracy = 0.9765
