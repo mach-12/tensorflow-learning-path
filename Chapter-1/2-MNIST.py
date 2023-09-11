@@ -18,6 +18,7 @@ VERBOSE = 1
 NB_CLASSES = 10
 N_HIDDEN = 128
 VAL_SPLIT = 0.2
+DROPOUT = 0.3
 
 # Loading Dataset
 mnist = keras.datasets.mnist
@@ -53,10 +54,21 @@ model = tf.keras.models.Sequential()
 # Hidden Layer 1
 model.add(
     keras.layers.Dense(N_HIDDEN, input_shape=(RESHAPED,), name='dense_layer_1', activation='relu'))
+
+# Dropout Layer
+model.add(
+    keras.layers.Dropout(DROPOUT)
+)
+
 # Hidden Layer 2
 model.add(
     keras.layers.Dense(N_HIDDEN, name='dense_layer_2', activation='relu'))
 
+# Dropout Layer
+model.add(
+    keras.layers.Dropout(DROPOUT)
+)
+# Output
 model.add(
     keras.layers.Dense(NB_CLASSES, name='output', activation='softmax'))
 
@@ -74,6 +86,9 @@ test_less, test_acc = model.evaluate(X_test, Y_test)
 print('Test Accuracy:', test_acc)
 
 # RESULTS
-# Train Accuracy = 0.9765
-# Val Accuracy = 0.9754
-# Test Accuracy = 0.9765
+# Train Accuracy = 0.9780
+# Val Accuracy = 0.9761
+# Test Accuracy = 0.9775
+# Train Loss = 0.0733
+# Val Loss = 0.0796
+# Test Loss = 0.0733
