@@ -12,7 +12,7 @@ import numpy as np
 from tensorflow import keras
 
 # Parameters
-EPOCHS = 2
+EPOCHS = 200
 BATCH_SIZE = 128
 VERBOSE = 1
 NB_CLASSES = 10
@@ -73,7 +73,7 @@ model.add(
     keras.layers.Dense(NB_CLASSES, name='output', activation='softmax'))
 
 # Compiling Model
-model.compile(optimizer='SGD',
+model.compile(optimizer='RMSProp',
               loss='categorical_crossentropy',
               metrics=['accuracy']
               )
@@ -95,9 +95,9 @@ print(*["TRAIN_ACC", "VAL_ACC", "TEST_ACC", "TRAIN_LOSS", "VAL_LOSS", "TEST_LOSS
 print(*metrics_list, sep="\t\t")
 
 # RESULTS
-# Train Accuracy = 0.9780
-# Val Accuracy = 0.9761
-# Test Accuracy = 0.9775
-# Train Loss = 0.0733
-# Val Loss = 0.0796
-# Test Loss = 0.0733
+# Train Accuracy = 0.9901
+# Val Accuracy = 0.9781
+# Test Accuracy = 0.9774
+# Train Loss = 0.0506
+# Val Loss = 0.3108
+# Test Loss = 0.3037
