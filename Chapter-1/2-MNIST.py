@@ -12,7 +12,7 @@ import numpy as np
 from tensorflow import keras
 
 # Parameters
-EPOCHS = 200
+EPOCHS = 2
 BATCH_SIZE = 128
 VERBOSE = 1
 NB_CLASSES = 10
@@ -79,11 +79,20 @@ model.compile(optimizer='SGD',
               )
 
 # Training Model
-model.fit(X_train, Y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=VERBOSE, validation_split=VAL_SPLIT)
+history = model.fit(X_train, Y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=VERBOSE, validation_split=VAL_SPLIT)
 
 # Evaluation of Model
-test_less, test_acc = model.evaluate(X_test, Y_test)
-print('Test Accuracy:', test_acc)
+test_loss, test_acc = model.evaluate(X_test, Y_test)
+
+# Printing Data
+train_loss, train_acc = history.history['loss'][-1], history.history['accuracy'][-1]
+val_loss, val_acc = history.history['val_loss'][-1], history.history['val_accuracy'][-1]
+
+metrics_list = [train_acc, val_acc, test_acc, train_loss, val_loss, test_loss]
+metrics_list = [f'{float(f"{i:.4g}"):g}' for i in metrics_list]  # Rounding to 4 Significant Digits
+
+print(*["TRAIN_ACC", "VAL_ACC", "TEST_ACC", "TRAIN_LOSS", "VAL_LOSS", "TEST_LOSS"], sep="\t")
+print(*metrics_list, sep="\t\t")
 
 # RESULTS
 # Train Accuracy = 0.9780
