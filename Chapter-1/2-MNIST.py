@@ -73,7 +73,7 @@ model.add(
     keras.layers.Dense(NB_CLASSES, name='output', activation='softmax'))
 
 # Compiling Model
-model.compile(optimizer='RMSProp',
+model.compile(optimizer='Adam',
               loss='categorical_crossentropy',
               metrics=['accuracy']
               )
@@ -95,9 +95,9 @@ print(*["TRAIN_ACC", "VAL_ACC", "TEST_ACC", "TRAIN_LOSS", "VAL_LOSS", "TEST_LOSS
 print(*metrics_list, sep="\t\t")
 
 # RESULTS
-# Train Accuracy = 0.9901
-# Val Accuracy = 0.9781
-# Test Accuracy = 0.9774
-# Train Loss = 0.0506
-# Val Loss = 0.3108
-# Test Loss = 0.3037
+# Train Accuracy = 0.9950
+# Val Accuracy = 0.9797
+# Test Accuracy = 0.9798
+# Train Loss = 0.0172
+# Val Loss = 0.1259
+# Test Loss = 0.1299
