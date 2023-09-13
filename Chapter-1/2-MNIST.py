@@ -18,7 +18,7 @@ VERBOSE = 1
 NB_CLASSES = 10
 N_HIDDEN = 128
 VAL_SPLIT = 0.2
-DROPOUT = 0.4
+DROPOUT = 0.5
 
 # Loading Dataset
 mnist = keras.datasets.mnist
@@ -95,9 +95,9 @@ print(*["TRAIN_ACC", "VAL_ACC", "TEST_ACC", "TRAIN_LOSS", "VAL_LOSS", "TEST_LOSS
 print(*metrics_list, sep="\t\t")
 
 # RESULTS
-# Train Accuracy = 0.9909
-# Val Accuracy = 0.9787
-# Test Accuracy = 0.9781
-# Train Loss = 0.0301
-# Val Loss = 0.1364
-# Test Loss = 0.1315
+# Train Accuracy = 0.9833
+# Val Accuracy = 0.9760
+# Test Accuracy = 0.9773
+# Train Loss = 0.0537
+# Val Loss = 0.1376
+# Test Loss = 0.1325
