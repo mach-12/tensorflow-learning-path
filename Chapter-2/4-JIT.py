@@ -22,5 +22,6 @@ fn(input_, state)
 graph_time = timeit.timeit(lambda: cell(input_, state), number=100)
 auto_graph_time = timeit.timeit(lambda: fn(input_, state), number=100)
 
+# Comparison of time of functions
 print('graph_time:', graph_time)
 print('auto_graph_time:', auto_graph_time)
